@@ -16,11 +16,28 @@ Ext.define('TipgameApp.Application', {
     },
 
     stores: [
-        // TODO: add global / shared stores here
     ],
 
     launch: function () {
-        // TODO - Launch the application
+        // It's important to note that this type of application could use
+        // any type of storage, i.e., Cookies, LocalStorage, etc.
+        var loggedIn;
+
+        // Check to see the current value of the localStorage key
+        localStorage.setItem("userId", "");
+
+        // This ternary operator determines the value of the TutorialLoggedIn key.
+        // If TutorialLoggedIn isn't true, we display the login window,
+        // otherwise, we display the main view
+//        if(true) {
+//            Ext.create({
+//                    xtype: 'app-main'
+//                });
+//        } else {
+        Ext.create({
+                    xtype: 'loginView'
+                });
+//        }
     },
 
     onAppUpdate: function () {
