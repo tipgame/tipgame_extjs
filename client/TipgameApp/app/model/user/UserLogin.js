@@ -2,11 +2,6 @@ Ext.define('TipgameApp.model.user.UserLogin', {
     extend: 'Ext.data.Model',
     fields: [
         {
-          type : 'int',
-          name : 'id',
-          persist: false
-        },
-        {
             name: 'username'
         }, {
             name: 'password'

@@ -6,9 +6,6 @@ Ext.define('TipgameApp.view.settings.Settings', {
         'Ext.form.Panel',
         'TipgameApp.controller.settings.SettingsController'
     ],
-    viewModel: {
-        type: 'userviewmodel'
-    },
     controller: 'settings',
     bodyPadding: 10,
     title: 'Einstellungen',

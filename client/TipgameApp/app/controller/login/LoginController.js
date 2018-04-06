@@ -4,20 +4,19 @@ Ext.define('TipgameApp.controller.login.LoginController', {
     onLoginClick: function() {
 
         var user = Ext.create('TipgameApp.model.user.UserLogin', {username: 't', password: 't', userId: 0});
-        debugger
         var userIsLoggedIn;
         var view = this.getView();
         user.save({
             success: function(user) {
-                if(user.data.loginAccepted) {
-                    debugger
-                    localStorage.setItem("userId", user.data.userId);
-                    view.destroy();
-                    Ext.create({
-                        xtype: 'app-main'
-                    });
+                localStorage.setItem("userId", user.data.userId);
+                view.destroy();
+                Ext.create({
+                    xtype: 'app-main'
+                });
+            },
+            failure: function (record, operation) {
+                    Ext.Msg.alert('Hinweis', 'Die Anmeldung ist fehlgeschlagen. Bitte überprüfe Benutzername und Passwort.', Ext.emptyFn);
                 }
-            }
         });
     },
     onRegisterClick: function() {
