@@ -31,6 +31,7 @@ public class UserController {
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "user/register", produces = APPLICATION_JSON_VALUE)
     public void register(@RequestBody RegistrationDto registrationDto) {
+        //TODO check if username already set
         UserEntity user = modelMapper.map(registrationDto, UserEntity.class);
         userRepository.save(user);
     }
@@ -41,7 +42,7 @@ public class UserController {
         ResponseEntity<UserDto> response;
         UserEntity userEntity = userRepository.findByUsername(userLogin.getUsername());
 
-        if (userEntity.getPassword().equalsIgnoreCase(userLogin.getPassword())) {
+        if (userEntity != null && userEntity.getPassword().equalsIgnoreCase(userLogin.getPassword())) {
             UserDto user = modelMapper.map(userEntity, UserDto.class);
             response = new ResponseEntity<>(user, HttpStatus.OK);
         } else {

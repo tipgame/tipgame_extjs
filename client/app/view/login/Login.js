@@ -10,13 +10,13 @@ Ext.define('TipgameApp.view.login.Login', {
 
     controller: 'login',
     bodyPadding: 10,
-    title: 'Login Window',
+    title: 'WM Tippspiel',
     closable: false,
     autoShow: true,
     plugins: 'viewport',
     items: {
         xtype: 'form',
-        reference: 'form',
+        reference: 'loginForm',
         items: [{
             xtype: 'textfield',
             name: 'username',

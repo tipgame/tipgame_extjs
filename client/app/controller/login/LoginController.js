@@ -3,11 +3,12 @@ Ext.define('TipgameApp.controller.login.LoginController', {
     alias: 'controller.login',
     onLoginClick: function() {
 
-        var user = Ext.create('TipgameApp.model.user.UserLogin', {username: 't', password: 't', userId: 0});
-        var userIsLoggedIn;
+        var loginValue = this.getView().lookupReference('loginForm').getValues();
+        var user = Ext.create('TipgameApp.model.user.UserLogin', {username: loginValue.username, password: loginValue.password});
         var view = this.getView();
         user.save({
             success: function(user) {
+
                 localStorage.setItem("userId", user.data.userId);
                 view.destroy();
                 Ext.create({

@@ -16,7 +16,7 @@ Ext.define('TipgameApp.view.register.Register', {
     plugins: 'viewport',
     items: {
         xtype: 'form',
-        reference: 'form',
+        reference: 'registrationForm',
         items: [{
             xtype: 'textfield',
             name: 'firstname',

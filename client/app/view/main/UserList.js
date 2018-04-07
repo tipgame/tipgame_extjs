@@ -13,10 +13,7 @@ Ext.define('TipgameApp.view.main.UserList', {
 
     listeners: {
         render : function(grid){
-                    debugger;
-                   grid.body.mask('Loading...');
-                   var store = this.getStore();
-                   store.load.defer(100, store);
+                    //TODO
                },
         select: 'onItemSelected'
     },
