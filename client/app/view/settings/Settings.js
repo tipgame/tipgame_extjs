@@ -25,14 +25,17 @@ Ext.define('TipgameApp.view.settings.Settings', {
             xtype: 'textfield',
             name: 'lastname',
             fieldLabel: 'Nachname',
+            bind: '{user.lastname}',
             allowBlank: false
         },
         {
             xtype: 'textfield',
             name: 'email',
             fieldLabel: 'E-Mail',
+            bind: '{user.email}',
             allowBlank: false
-        },
+        }
+        /*,
         {
             title: 'Avatar',
             frame: true,
@@ -58,7 +61,7 @@ Ext.define('TipgameApp.view.settings.Settings', {
                 text: 'Zurücksetzen',
                 handler: 'resetAvatarHandler'
             }]
-        }
+        } */
         ],
         buttons: [{
             text: 'Einstellungen speichern',

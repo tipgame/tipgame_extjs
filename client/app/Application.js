@@ -41,7 +41,7 @@ Ext.define('TipgameApp.Application', {
     },
 
     onAppUpdate: function () {
-        Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
+        Ext.Msg.confirm('Update der Seite.', 'Die Seite wurde geupdatet. Soll die Seite neu geladen werden?',
             function (choice) {
                 if (choice === 'yes') {
                     window.location.reload();

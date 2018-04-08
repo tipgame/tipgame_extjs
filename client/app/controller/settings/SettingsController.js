@@ -4,9 +4,8 @@ Ext.define('TipgameApp.controller.settings.SettingsController', {
     init: function() {
         this.callParent(arguments);
         var me = this;
-        debugger
         var userId = localStorage.getItem("userId");
-        TipgameApp.model.user.UserModel.load(2, {
+        TipgameApp.model.user.UserModel.load(userId, {
             success: function(record, operation) {
                 me.getViewModel().set('user', record);
             }

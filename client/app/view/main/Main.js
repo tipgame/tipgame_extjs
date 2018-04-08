@@ -86,7 +86,11 @@ Ext.define('TipgameApp.view.main.Main', {
     },
     {
         title: 'Tipps',
-        iconCls: 'fa fa-futbol-o'
+        iconCls: 'fa fa-futbol-o',
+        items: [
+        {
+            xtype: 'layout.tipps'
+        }]
     },
     {
          title: 'Einstellungen',

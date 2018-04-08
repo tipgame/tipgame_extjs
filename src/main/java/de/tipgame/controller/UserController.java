@@ -5,6 +5,7 @@ import de.tipgame.dtos.RegistrationDto;
 import de.tipgame.dtos.UserDto;
 import de.tipgame.entity.UserEntity;
 import de.tipgame.repository.UserRepository;
+import de.tipgame.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,19 +22,20 @@ public class UserController {
 
     private UserRepository userRepository;
     private ModelMapper modelMapper;
+    private UserService userService;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository,
+                          UserService userService) {
         this.userRepository = userRepository;
         this.modelMapper = new ModelMapper();
+        this.userService = userService;
     }
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.POST, value = "user/register", produces = APPLICATION_JSON_VALUE)
-    public void register(@RequestBody RegistrationDto registrationDto) {
-        //TODO check if username already set
-        UserEntity user = modelMapper.map(registrationDto, UserEntity.class);
-        userRepository.save(user);
+    public ResponseEntity register(@RequestBody RegistrationDto registrationDto) {
+        return userService.registerUser(registrationDto);
     }
 
     @CrossOrigin
@@ -67,7 +69,7 @@ public class UserController {
 
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, value = "/user/{userId}", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDto> getUserById(@PathVariable int userId) {
+    public ResponseEntity<UserDto> getUserById(@PathVariable("userId") int userId) {
         UserEntity userEntity = userRepository.findById(userId);
         UserDto userDto = modelMapper.map(userEntity, UserDto.class);
         return new ResponseEntity(userDto, HttpStatus.OK);

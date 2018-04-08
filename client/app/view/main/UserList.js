@@ -1,22 +1,26 @@
-/**
- * This view is an example list of people.
- */
 
 Ext.define('TipgameApp.view.main.UserList', {
     extend: 'Ext.grid.Panel',
     xtype: 'userslist',
-    requires: [
-        'TipgameApp.store.user.UsersStore'
-    ],
 
     title: 'Mitspieler',
 
-    listeners: {
-        render : function(grid){
-                    //TODO
-               },
-        select: 'onItemSelected'
+
+    initComponent: function () {
+        var store = Ext.create('Ext.data.Store', {
+                model: 'TipgameApp.model.user.UserModel',
+                proxy: {
+                        type: 'rest',
+                        url : 'http://localhost:8080/user/all'
+                    }
+            });
+
+        store.load();
+        this.store = store;
+        this.callParent(arguments);
     },
+
+
     columns: [{
                 text: 'Vorname',
                 flex: 1,

@@ -4,7 +4,6 @@ Ext.define('TipgameApp.controller.register.RegisterController', {
 
     onSendRegistration: function() {
         //TODO HashPwd
-        debugger
         var registrationValues = this.getView().lookupReference('registrationForm').getValues();
         var user = Ext.create('TipgameApp.model.user.RegisterUser',
             {firstname: registrationValues.firstname,

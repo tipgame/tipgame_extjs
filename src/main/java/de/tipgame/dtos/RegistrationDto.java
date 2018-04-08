@@ -6,6 +6,7 @@ public class RegistrationDto {
     private String email;
     private String username;
     private String password;
+    private String registrationCode;
 
     public String getFirstname() {
         return firstname;
@@ -45,5 +46,13 @@ public class RegistrationDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRegistrationCode() {
+        return registrationCode;
+    }
+
+    public void setRegistrationCode(String registrationCode) {
+        this.registrationCode = registrationCode;
     }
 }
